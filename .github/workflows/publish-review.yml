@@ -1,0 +1,55 @@
+name: Publish verified review download
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'payload/**'
+      - '.github/workflows/publish-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-v1-review
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore and verify the original review ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat payload/P-RNG-Review.zip.b64.part* | base64 --decode > P-RNG-Review.zip
+          cp payload/P-RNG-Review.zip.sha256 P-RNG-Review.zip.sha256
+          sha256sum --check P-RNG-Review.zip.sha256
+          python3 - <<'PY'
+          import hashlib, zipfile
+          with zipfile.ZipFile('P-RNG-Review.zip') as archive:
+              assert archive.testzip() is None
+              manifest = archive.read('P-RNG-Review/PACKAGE_SHA256SUMS.txt').decode('ascii')
+              for line in manifest.splitlines():
+                  expected, name = line.split('  ', 1)
+                  actual = hashlib.sha256(archive.read('P-RNG-Review/' + name)).hexdigest()
+                  assert actual == expected, name
+          print('Verified archive and all packaged files.')
+          PY
+      - name: Publish review prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEW_TAG: v1-review-20261101
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$REVIEW_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo 'Review release already exists; leaving it unchanged.'
+            exit 0
+          fi
+          gh release create "$REVIEW_TAG" P-RNG-Review.zip P-RNG-Review.zip.sha256 \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title 'P-RNG V1 — experimental review package' --notes-file RELEASE_NOTES.md

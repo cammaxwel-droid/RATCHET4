@@ -1,0 +1,312 @@
+[
+  {
+    "seed": [
+      "0x0000000000000000",
+      "0x0000000000000000"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x07fbd90087a71830",
+      "0xdca78d3644b6b300",
+      "0x9e735fdcd5d2f4dd",
+      "0xa77362198b843697"
+    ],
+    "outputs": [
+      "0x6a0d307c7b370277",
+      "0x9d28c1a69e06b818",
+      "0x635fde8525cc69fa",
+      "0x4cef77dede30e757",
+      "0x6a0001ea0333a5bb",
+      "0x2ad5c6807fdc26ba",
+      "0xdb9507b052ef9104",
+      "0x3dabc74f83ab9007",
+      "0xf7a0646d6c251959",
+      "0x15d4b70dcbc2c278",
+      "0x05673c63f18a45ef",
+      "0x6cfbd462367908fd",
+      "0xf56020fa9b83215f",
+      "0x4eec6b787eaefc10",
+      "0x339c551f54913ba4",
+      "0x8edf308c728d9808"
+    ]
+  },
+  {
+    "seed": [
+      "0x0000000000000000",
+      "0x0000000000000001"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x6e30847b83b5d8d7",
+      "0x28a90f1eaf94e481",
+      "0xf370292fc6b7db48",
+      "0xfd94657c9082b2c4"
+    ],
+    "outputs": [
+      "0xc6c2ec4f8ae43a62",
+      "0x5a44a58d6ba87761",
+      "0xbd4579fcf0e19e3e",
+      "0xd427fc5748f04c7b",
+      "0x4880be2536280fcb",
+      "0x31f24deb2369bc6c",
+      "0x4b34ffbe026f418d",
+      "0x5ec5eba71e096d7f",
+      "0x2cfddee6e68a711b",
+      "0x48d1c77559fbdad9",
+      "0x8f70cd72470dc86d",
+      "0xf7c7fe7048827f77",
+      "0x4430e6e6e2d3592b",
+      "0x6332dd12f48520d9",
+      "0xf2b3cf28f7105562",
+      "0x7b3bfffd493a1340"
+    ]
+  },
+  {
+    "seed": [
+      "0x0000000000000001",
+      "0x0000000000000000"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x0f81701fd566b0ba",
+      "0x0e97eda409299eee",
+      "0x2ac3371d7fb6ee36",
+      "0x49b9da27bdf0c0ed"
+    ],
+    "outputs": [
+      "0x41a5aa56007fbfa6",
+      "0xa1b8a05e5ed76754",
+      "0x0b0f85619851fd13",
+      "0x28cd9fbe4128c6ca",
+      "0x6793b9fd466b21e3",
+      "0x122d6e9e7c8968fc",
+      "0x889de3548910fa3a",
+      "0x29e6990c57961821",
+      "0x4f72499d352b3e8e",
+      "0x4fff3aa14eb60b89",
+      "0x8ac21e7fc57e274a",
+      "0xa85a738f21977114",
+      "0x9da1ffd03b7722e7",
+      "0x14c02b5dbc0b5339",
+      "0xa1b6b108f5d8e544",
+      "0x8a7ddc8e5a018780"
+    ]
+  },
+  {
+    "seed": [
+      "0x0000000000000001",
+      "0x0000000000000001"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x94b2d10f0482d4da",
+      "0x2d9f131bb8e8a156",
+      "0xadf42bc458a96ce2",
+      "0x991b8812c57e3709"
+    ],
+    "outputs": [
+      "0x20b1e4d9943ac3c1",
+      "0xfec11b9e402a4f26",
+      "0x6dbf279a6c076658",
+      "0x0d999ad3929a7e3c",
+      "0xd62b6b25d276cdee",
+      "0x11d91bea87421016",
+      "0xd402b9b2e1f95469",
+      "0x297803708ab247ba",
+      "0xb137ccdbbe739739",
+      "0xfeeecb217c842542",
+      "0x376566dca5ac4a73",
+      "0x6157a51c5e5a66ca",
+      "0x0110ea3bbc52acd1",
+      "0x778fcdb27538bbcb",
+      "0x95319a222e0e7525",
+      "0x37284dd181c2d5f2"
+    ]
+  },
+  {
+    "seed": [
+      "0xffffffffffffffff",
+      "0xffffffffffffffff"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x3a75edb263a7f40c",
+      "0x91d7cef7c60e2b31",
+      "0x960cfff33d7b8233",
+      "0xf1430bf648963647"
+    ],
+    "outputs": [
+      "0x8fca3b687afaa43b",
+      "0xff626115bba14ed9",
+      "0x1a7c10421e76821b",
+      "0x26c155376c0a609e",
+      "0x6bfc0a0bdcc1a674",
+      "0xdf80b709d7b2218b",
+      "0x9461eab9f146ab63",
+      "0xd21dd809e005b943",
+      "0xa3a453d3fe3453fa",
+      "0x0a96860c93f85034",
+      "0xe6dc19d18410390e",
+      "0xb42aaac7bce9a7d5",
+      "0xe9c408c10eb233ee",
+      "0xf4c400cf89b367fe",
+      "0x8c1a9ff2819edfab",
+      "0x3cacb8221c1721dd"
+    ]
+  },
+  {
+    "seed": [
+      "0xffffffffffffffff",
+      "0x0000000000000000"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0xe89c9a2cd42baace",
+      "0xdf2b62088e87ea6e",
+      "0x978640c1315afa75",
+      "0x9af99fb18ef8bc73"
+    ],
+    "outputs": [
+      "0x1ab9eec946530c32",
+      "0x33113aea66782303",
+      "0xde8cea8b8dda54bf",
+      "0xef4a96998b16c098",
+      "0x56dc100397c6b7a4",
+      "0xdb7c73662ad5cb51",
+      "0xdcf522becd0a7eee",
+      "0x69be996f9e843616",
+      "0xa5af79eaf519b3b1",
+      "0x91e65986c33e5879",
+      "0x08f663914e262a3c",
+      "0xfe009af7d2b40345",
+      "0xb296724f78a83175",
+      "0xeb4d31eba47719ef",
+      "0xd697d273f41693d7",
+      "0xcb7070f3f7d43e69"
+    ]
+  },
+  {
+    "seed": [
+      "0x0000000000000000",
+      "0xffffffffffffffff"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x3b49a7360f73f328",
+      "0x5eca86f47968a879",
+      "0x40e18cbed96ba618",
+      "0x26b980044909e8c0"
+    ],
+    "outputs": [
+      "0x7660fd266cd659cb",
+      "0x557a2dbd6d43cc5e",
+      "0x5a0f24510a362847",
+      "0xf503f88380a06565",
+      "0x308bddb1f292901f",
+      "0x05d987dfcfa44679",
+      "0xc97f4e50f9a98dd5",
+      "0x4db7cc0b87259e42",
+      "0x570b0b4862281080",
+      "0x5c0505fa37ccd19d",
+      "0xec99516024872838",
+      "0x803734217b357b67",
+      "0xe1cab7c66d465882",
+      "0x23b88b5e054a0af4",
+      "0x5265d10bce4bead5",
+      "0x7753a8e9925ac042"
+    ]
+  },
+  {
+    "seed": [
+      "0x8000000000000000",
+      "0x0000000000000000"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0xad3e95336172e5f9",
+      "0xddc447435268364e",
+      "0x42d93bd93689c5dd",
+      "0xe1d077731c87f5e9"
+    ],
+    "outputs": [
+      "0xa8b1f460b4e44c8a",
+      "0xfff110fcad3cd304",
+      "0x4da590ed30254a55",
+      "0xc48ebafeea0aaa34",
+      "0x20249143c281b41d",
+      "0x7b93222b28ce3cff",
+      "0x3b5f9cf51dd51c75",
+      "0xd3733e578bf44a46",
+      "0xcbe919db2c01757d",
+      "0xc1a65aaccc691da9",
+      "0xab618b276c86fa20",
+      "0x74a70610684032ad",
+      "0xe91326bbecd27938",
+      "0x4fae9b2a2b2a097e",
+      "0x4e0eb95fa03ad04c",
+      "0x7fd6efdc417e5af8"
+    ]
+  },
+  {
+    "seed": [
+      "0x0000000000000000",
+      "0x8000000000000000"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0xfd97ee09d5777b63",
+      "0xd370dac9f7695ec4",
+      "0x06b05fd8c8518dd9",
+      "0x8c75d6c35600f4eb"
+    ],
+    "outputs": [
+      "0x409aad726ebd9f90",
+      "0xaca38c7c14eb6198",
+      "0x31344731756e8bc0",
+      "0xb0e0fec06be0b2a9",
+      "0x2834dc7a7484f8fc",
+      "0xd2a0b536f739cf32",
+      "0xcd47998c42c3b4b2",
+      "0xa3be8b80dd117064",
+      "0xeea6f826d8289bab",
+      "0xc09eb03af6279e7b",
+      "0xb6356c9ad43a31e1",
+      "0x0ab1b42edfda46a3",
+      "0xf268d3946284f252",
+      "0xf78a0751d7970217",
+      "0x87600d719a41a2c7",
+      "0x610b207866cd3d62"
+    ]
+  },
+  {
+    "seed": [
+      "0xaaaaaaaaaaaaaaaa",
+      "0x5555555555555555"
+    ],
+    "state_after_warmup": [
+      "0x0000000000000010",
+      "0x9ab2387abce4a831",
+      "0x7415963285e0676b",
+      "0xcce7495e5d3e4353",
+      "0x9d0b8bf027555498"
+    ],
+    "outputs": [
+      "0xf31fe0459c65e7e6",
+      "0xbaca1d46c4d575f7",
+      "0xede5d2d8e54c4962",
+      "0x3bbec0d27a330446",
+      "0x4101388e003b584d",
+      "0xd43c607d80c87617",
+      "0x7a59c02f01ae390c",
+      "0xaabac26a13327cfb",
+      "0x1bebc5a1b3731f81",
+      "0x86ea12cc83d9fab7",
+      "0x28ed30a97382f5d5",
+      "0xee6551bc2059eaa2",
+      "0x03f3a05c3bcc0f6d",
+      "0xfab28d859608d88a",
+      "0x2e2104b4fe1579f8",
+      "0x7053e1b4b144ebb7"
+    ]
+  }
+]

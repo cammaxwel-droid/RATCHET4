@@ -1,0 +1,4 @@
+ea1d8ee1381d9f4be25e8f4a9f477b55373810628d5b379dfce73b35302ff047  /tmp/ratboy-v0.yBttCn5H/trace.csv
+ea1d8ee1381d9f4be25e8f4a9f477b55373810628d5b379dfce73b35302ff047  /tmp/ratboy-v0.yBttCn5H/trace-ubsan.csv
+V0 defect reproduced; all 40960 reference comparisons matched.
+Results: /tmp/ratboy-v0.yBttCn5H/results.json

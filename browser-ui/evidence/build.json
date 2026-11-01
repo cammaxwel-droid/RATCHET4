@@ -1,0 +1,23 @@
+{
+  "engine": "Ratchet-4 V1",
+  "engineHeaderSHA256": "afc73d26c5c7b33448f6e11a33c081c3d719a70183b70801da3d5f32f81ef1ae",
+  "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.6 ()",
+  "engineJS_SHA256": "b4277e556524eccc4ff48636618fd0e822f3c1c46ac2d5b10d8de7edfaf9cb88",
+  "interfaceVersion": "1.0",
+  "engineUnchanged": true,
+  "htmlSHA256": "560064cb00e62eadc1f92cff51fbb2756fde8dcdc428c6e7ed769a6e33996b21",
+  "compilerFlags": [
+    "-std=c++17",
+    "-O3",
+    "-fexceptions",
+    "-sDISABLE_EXCEPTION_CATCHING=0",
+    "-sMODULARIZE=1",
+    "-sEXPORT_NAME=createRatchet",
+    "-sSINGLE_FILE=1",
+    "-sWASM_BIGINT=1",
+    "-sENVIRONMENT=web,node",
+    "-sFILESYSTEM=0",
+    "--no-entry"
+  ],
+  "usedPrecompiledBridge": false
+}

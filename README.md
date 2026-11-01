@@ -1,23 +1,23 @@
 # P-RNG — Lett-uce Guess / Ratchet-4 V1
 
-[**Download the complete P-RNG review ZIP**](https://github.com/cammaxwel-droid/P_RNG_LETT-UCE-GUESS/releases/download/v1-review-20261101/P-RNG-Review.zip)
+[**Download the browser review interface — P-RNG-Lab.html**](https://github.com/cammaxwel-droid/P_RNG_LETT-UCE-GUESS/releases/download/v1-browser-review-20261101/P-RNG-Lab.html)
 
-Extract the ZIP, then double-click **START_DEMO.cmd** inside `P-RNG-Review` to try it. No compiler is required for the included Windows x64 executable.
+Open the downloaded HTML file normally in **Edge or Chrome**. It runs offline, with no installation, `.cmd` launcher, administrator mode, or separate executable. This is the recommended review interface if Windows blocks the unsigned native demo.
 
-To put a separate review copy in your Documents folder, double-click **COPY_TO_DOCUMENTS.cmd**. It creates a new folder, checks the copied files, and opens it.
+The interface runs the **same unchanged C++17 engine compiled to WebAssembly**. It includes seed controls, table/bounded/raw draws, replay, a histogram, recent outputs, a **Run checks** button, descriptive bit-frequency sampling, and report export.
 
-The complete download contains the original C++17 source, Windows and Linux executables, automated tests, mathematical design notes, original test results, and the subsequent NS3 warning investigation. The Windows executable was tested under Wine; native Windows 11 execution and the Documents helper have not been verified.
+The browser engine matched **52,224 native C++ outputs across 136 seed cases**. Its 5,485 correctness assertions and 24 browser interaction checks passed. Tests ran on Linux/Chromium; Windows 11 and Edge on Windows have not been executed here.
 
-**Status: experimental research/demo prototype.** Statistical warnings and evidence of NS3 small-sample calibration problems are preserved. This is not approved for production or real-money use. V0 is archived as known defective and is excluded from the demo. V1's engine is unchanged.
+- [Browser UI documentation, source and executed results](browser-ui/README.md)
+- [Complete browser review ZIP](https://github.com/cammaxwel-droid/P_RNG_LETT-UCE-GUESS/releases/download/v1-browser-review-20261101/P-RNG-Browser-Review.zip)
+- [Original native review package and full research evidence](https://github.com/cammaxwel-droid/P_RNG_LETT-UCE-GUESS/releases/download/v1-review-20261101/P-RNG-Review.zip)
+- [C++ engine](ratchet4-v1/include/ratchet4.hpp)
+- [Mathematical design](ratchet4-v1/docs/DESIGN.md)
+- [Original statistical results](ratchet4-v1/docs/RESULTS.md)
+- [NS3 warning investigation](investigation/README.md)
 
-- [Browse the C++ engine](ratchet4-v1/include/ratchet4.hpp)
-- [Design and mathematical limitations](ratchet4-v1/docs/DESIGN.md)
-- [Original test results](ratchet4-v1/docs/RESULTS.md)
-- [Latest investigation](investigation/README.md)
-- [Review release and download files](https://github.com/cammaxwel-droid/P_RNG_LETT-UCE-GUESS/releases/tag/v1-review-20261101)
+**Status: experimental research/demo prototype.** Correctness checks do not establish security, fairness, or production suitability. Original statistical warnings and the later calibration investigation are preserved. Real-money deployment is not approved. V0 remains archived as known defective and is excluded from the demo.
 
-The source and documentation are freely reusable under [0BSD](LICENSE); separate third-party notices are retained. Originality is proposed, not guaranteed.
+The original native Windows executable was tested under Wine and is unsigned. The updated repository launcher gives a clearer message when its executable is missing; it does not sign or unblock that executable. The browser interface avoids invoking it.
 
-The browsable source tree omits the executable and large evidence directories; those are included in full in the review ZIP. The repository workflow reconstructs that exact ZIP from the transport payload, verifies its SHA-256 and every packaged file, then attaches it to the review prerelease. It does not rebuild or modify the engine.
-
-ZIP SHA-256: `14e51788c3f9d63c33b0f7aff69e782521053a20bfe8988e1a27e35bbee2e33d`.
+The source and project documents use [0BSD](LICENSE); compiler/runtime and other third-party notices are retained. Originality is proposed, not guaranteed. Original native release files are unchanged.

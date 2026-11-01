@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "nativeComparisons": 52224,
+  "seedPairs": 136,
+  "quickChecks": {
+    "status": "PASS",
+    "checks": 5485,
+    "groups": [
+      {
+        "name": "Frozen reference vectors: 10 seed pairs",
+        "status": "PASS",
+        "checks": 210
+      },
+      {
+        "name": "Replay and stream continuation",
+        "status": "PASS",
+        "checks": 1152
+      },
+      {
+        "name": "Bounds and independent rejection mapping",
+        "status": "PASS",
+        "checks": 4112
+      },
+      {
+        "name": "Invalid inputs rejected without advancing state",
+        "status": "PASS",
+        "checks": 11
+      }
+    ]
+  },
+  "host": "linux",
+  "node": "v22.23.3"
+}

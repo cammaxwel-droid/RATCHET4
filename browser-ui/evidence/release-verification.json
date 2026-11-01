@@ -1,0 +1,11 @@
+{
+  "original_engine_header_sha256": "afc73d26c5c7b33448f6e11a33c081c3d719a70183b70801da3d5f32f81ef1ae",
+  "original_review_zip_sha256": "14e51788c3f9d63c33b0f7aff69e782521053a20bfe8988e1a27e35bbee2e33d",
+  "visual_review": [
+    "desktop 1440px",
+    "mobile 390px"
+  ],
+  "native_launch_error": "Exact cause on user PC unconfirmed; browser UI does not invoke native launcher.",
+  "browser_testing": "Chromium on Linux via local file URL; no native Windows verification",
+  "compiler_runtime_equivalence": "Final embedded engine JS hash matches the bridge used for native comparisons."
+}

@@ -1,0 +1,58 @@
+name: Publish browser review interface
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'browser-ui/**'
+      - '.github/workflows/publish-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-browser-review
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the tested interface and package it
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd browser-ui && sha256sum --check SHA256SUMS)
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, zipfile
+          root = Path('browser-ui')
+          assert hashlib.sha256((root/'include/ratchet4.hpp').read_bytes()).hexdigest() == 'afc73d26c5c7b33448f6e11a33c081c3d719a70183b70801da3d5f32f81ef1ae'
+          build = json.loads((root/'evidence/build.json').read_text())
+          assert hashlib.sha256((root/'P-RNG-Lab.html').read_bytes()).hexdigest() == build['htmlSHA256']
+          assert json.loads((root/'evidence/native-equivalence.json').read_text())['status'] == 'PASS'
+          assert json.loads((root/'evidence/browser-tests.json').read_text())['status'] == 'PASS'
+          with zipfile.ZipFile('P-RNG-Browser-Review.zip','w',zipfile.ZIP_DEFLATED) as archive:
+              for file in sorted(root.rglob('*')):
+                  if file.is_file():
+                      archive.write(file, 'P-RNG-Browser-Review/' + file.relative_to(root).as_posix())
+          PY
+          cp browser-ui/P-RNG-Lab.html P-RNG-Lab.html
+          sha256sum P-RNG-Lab.html P-RNG-Browser-Review.zip > P-RNG-Browser-Review.sha256
+      - name: Publish browser prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REVIEW_TAG: v1-browser-review-20261101
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$REVIEW_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo 'Browser review release already exists; leaving it unchanged.'
+            exit 0
+          fi
+          gh release create "$REVIEW_TAG" P-RNG-Lab.html P-RNG-Browser-Review.zip P-RNG-Browser-Review.sha256 \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title 'P-RNG review lab — browser interface' --notes-file BROWSER_RELEASE_NOTES.md

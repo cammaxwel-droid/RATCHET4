@@ -1,0 +1,51 @@
+name: Publish Strap review
+on:
+  push:
+    branches: [main]
+    paths: ['strap/**', '.github/workflows/publish-strap.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-strap-review
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify packaged files
+        working-directory: strap
+        run: sha256sum --check SHA256SUMS
+      - name: Build and test C++ companion
+        run: python3 strap/test.py
+      - name: Verify evidence and package release
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,zipfile,shutil
+          root=pathlib.Path('strap')
+          build=json.loads((root/'evidence/build.json').read_text())
+          assert hashlib.sha256((root/'Strap-Lab.html').read_bytes()).hexdigest()==build['htmlSHA256']
+          assert hashlib.sha256((root/'include/ratchet4.hpp').read_bytes()).hexdigest()=='afc73d26c5c7b33448f6e11a33c081c3d719a70183b70801da3d5f32f81ef1ae'
+          for name in ['native-tests','native-equivalence','browser-tests']:
+              assert json.loads((root/f'evidence/{name}.json').read_text())['status']=='PASS'
+          assert (root/'include/ratchet4.hpp').read_bytes() in (root/'Strap-Lab.html').read_bytes()
+          assert (root/'licenses/Ratchet-0BSD.txt').read_bytes() in (root/'Strap-Lab.html').read_bytes()
+          shutil.copyfile(root/'Strap-Lab.html','Strap-Lab.html')
+          with zipfile.ZipFile('Strap-Review.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for p in sorted(root.rglob('*')):
+                  if p.is_file():z.write(p,'Strap-Review/'+p.relative_to(root).as_posix())
+          pathlib.Path('SHA256SUMS-STRAP.txt').write_text(''.join(hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()+'  '+name+'\n' for name in ['Strap-Lab.html','Strap-Review.zip']))
+          PY
+      - name: Publish separate experimental prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=strap-v1-review-20261101
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release already exists; preserving its assets."
+          else
+            gh release create "$tag" Strap-Lab.html Strap-Review.zip SHA256SUMS-STRAP.txt \
+              --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+              --title "Strap 1.0 — Ratchet's mirrored companion" --notes-file STRAP_RELEASE_NOTES.md
+          fi

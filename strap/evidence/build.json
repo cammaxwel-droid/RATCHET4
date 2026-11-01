@@ -1,0 +1,22 @@
+{
+  "adapter": "Strap 1.0",
+  "sourceEngine": "Ratchet-4 V1",
+  "engineHeaderSHA256": "afc73d26c5c7b33448f6e11a33c081c3d719a70183b70801da3d5f32f81ef1ae",
+  "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.6 ()",
+  "compilerFlags": [
+    "-std=c++17",
+    "-O3",
+    "-fexceptions",
+    "-sDISABLE_EXCEPTION_CATCHING=0",
+    "-sMODULARIZE=1",
+    "-sEXPORT_NAME=createStrap",
+    "-sSINGLE_FILE=1",
+    "-sWASM_BIGINT=1",
+    "-sENVIRONMENT=web,node",
+    "-sFILESYSTEM=0",
+    "--no-entry"
+  ],
+  "engineJS_SHA256": "8e243725413da58ab8e27341290a1bc023167d4df516a9f232a44b99ae0b3206",
+  "originalEngineUnchanged": true,
+  "htmlSHA256": "07b7b0f8c8c8ed34ea139d4a4f0c732614a4dbcf9e56e92a728566b46441fce5"
+}

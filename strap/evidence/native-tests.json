@@ -1,0 +1,48 @@
+{
+  "missingDependency": {
+    "status": "PASS",
+    "expected": "Compilation fails when original Ratchet header is absent",
+    "command": [
+      "g++",
+      "-std=c++17",
+      "-I/tmp/strap-dependency-_aiwtzqe",
+      "-c",
+      "/tmp/strap-dependency-_aiwtzqe/probe.cpp",
+      "-o",
+      "/tmp/strap-dependency-_aiwtzqe/probe.o"
+    ],
+    "exitCode": 1,
+    "compilerOutput": "In file included from /tmp/strap-dependency-_aiwtzqe/probe.cpp:1:\n/tmp/strap-dependency-_aiwtzqe/strap.hpp:4:10: fatal error: ratchet4.hpp: No such file or directory\n    4 | #include \"ratchet4.hpp\"\n      |          ^~~~~~~~~~~~~~\ncompilation terminated.\n"
+  },
+  "status": "PASS",
+  "compiler": "g++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.36",
+  "nativeCommand": [
+    "g++",
+    "-std=c++17",
+    "-O3",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-I/workspace/outputs/Strap-Review/include",
+    "/workspace/outputs/Strap-Review/tests/test_strap.cpp",
+    "-o",
+    "/workspace/artifact-work/strap-build/test_strap"
+  ],
+  "nativeOutput": "PASS 1351009 Strap assertions; 136 seed cases; raw/bounded/mixed calls, replay, invalid bounds, wrap, mirror bijections\n",
+  "compilerWarnings": "",
+  "cmakeVersion": "cmake version 3.31.6",
+  "cmakeLog": "-- The CXX compiler identification is GNU 12.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.2s)\n-- Generating done (0.0s)\n-- Build files have been written to: /tmp/strap-native-o6lobgk4\n[ 16%] Building CXX object CMakeFiles/strap_demo.dir/src/demo.cpp.o\n[ 33%] Building CXX object CMakeFiles/test_strap.dir/tests/test_strap.cpp.o\n[ 50%] Linking CXX executable strap_demo\n[ 50%] Built target strap_demo\n[ 66%] Building CXX object CMakeFiles/strap_benchmark.dir/tests/benchmark.cpp.o\n[ 83%] Linking CXX executable test_strap\n[ 83%] Built target test_strap\n[100%] Linking CXX executable strap_benchmark\n[100%] Built target strap_benchmark\nTest project /tmp/strap-native-o6lobgk4\n    Start 1: strap_contract\n1/1 Test #1: strap_contract ...................   Passed    0.02 sec\n\n100% tests passed, 0 tests failed out of 1\n\nTotal Test time (real) =   0.02 sec\n",
+  "sanitizers": {
+    "status": "PASS",
+    "flags": [
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer"
+    ],
+    "exitCode": 0,
+    "stdout": "PASS 1351009 Strap assertions; 136 seed cases; raw/bounded/mixed calls, replay, invalid bounds, wrap, mirror bijections\n",
+    "stderr": ""
+  }
+}

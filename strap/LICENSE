@@ -1,0 +1,51 @@
+STRAP — RATCHET REQUIRED LICENSE 1.0
+Identifier: LicenseRef-Ratchet-Required-1.0
+
+Ratchet first; Strap second.
+
+Scope
+This license applies to newly authored Strap code and project materials in this
+directory and its subdirectories, and to the new Strap content in the standalone
+HTML. Exceptions: include/ratchet4.hpp and tests/ratchet-vectors.json remain
+Ratchet materials under licenses/Ratchet-0BSD.txt. Files under licenses/ retain
+their respective terms and notices. This license does not replace the licenses
+of Ratchet, previously released Ratchet interfaces, compiler runtimes, or other
+third-party material. Those same exceptions apply to material embedded in HTML.
+
+Permission
+Permission is granted, free of charge, to use, copy, modify, and distribute
+Strap, including commercially, subject to all of the following conditions:
+
+1. Before using Strap, you must obtain the original Ratchet-4 V1 implementation.
+   A copy supplied with Strap satisfies this condition. No purchase,
+   registration, separate download, or proof of prior ownership is required.
+
+2. Strap, including modified versions using this licensed code, must remain an
+   add-on that depends on the original Ratchet-4 V1 implementation for its source
+   draws. Do not remove that dependency or substitute another generator while
+   exercising permission under this license. Compiling the original engine to
+   another target, including WebAssembly, is permitted.
+
+3. When redistributing Strap, include this license, the original Ratchet-4 V1
+   source, and Ratchet's 0BSD license. The source and notices may be included
+   within a standalone HTML file. Preserve identification of the two separately
+   licensed components, including in modified distributions.
+
+Definition of original Ratchet
+For this license, the original implementation is the supplied ratchet4.hpp with
+SHA-256 afc73d26c5c7b33448f6e11a33c081c3d719a70183b70801da3d5f32f81ef1ae.
+It is independently available under the unchanged 0BSD terms in
+licenses/Ratchet-0BSD.txt. Nothing here limits rights granted by that license
+when Ratchet is used separately. This license imposes conditions on permission
+to use Strap; it does not relicense Ratchet or revoke earlier permissions.
+
+Disclaimer
+STRAP IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+AND NONINFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, THE AUTHORS AND
+CONTRIBUTORS SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY,
+WHETHER IN CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION
+WITH STRAP OR ITS USE.
+
+No claim of security, randomness quality, gambling fairness, payout control,
+jackpot balancing, regulatory approval, or production suitability is made.

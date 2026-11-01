@@ -1,0 +1,55 @@
+{
+  "status": "COMPLETED",
+  "compiler": "g++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.36",
+  "command": "g++ -std=c++17 -O3 -Wall -Wextra -Wpedantic -Iinclude tests/benchmark.cpp -o benchmark && ./benchmark",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "measurement": "Shared Linux host wall-clock timings; 5 trials of 1,000,000 draws each, initialization excluded; no cross-machine performance guarantee.",
+  "results": [
+    {
+      "operation": "Ratchet raw",
+      "draws_per_trial": "1000000",
+      "trials": "5",
+      "median_ns_per_draw": "17.9147",
+      "min_ns_per_draw": "15.0857",
+      "max_ns_per_draw": "19.2321",
+      "checksum": "4179460181258271790"
+    },
+    {
+      "operation": "Strap raw",
+      "draws_per_trial": "1000000",
+      "trials": "5",
+      "median_ns_per_draw": "17.5162",
+      "min_ns_per_draw": "15.9087",
+      "max_ns_per_draw": "24.8179",
+      "checksum": "4179460181258271790"
+    },
+    {
+      "operation": "Paired raw",
+      "draws_per_trial": "1000000",
+      "trials": "5",
+      "median_ns_per_draw": "16.3997",
+      "min_ns_per_draw": "15.37",
+      "max_ns_per_draw": "27.4739",
+      "checksum": "4007333942302358382"
+    },
+    {
+      "operation": "Strap bound 37",
+      "draws_per_trial": "1000000",
+      "trials": "5",
+      "median_ns_per_draw": "15.2934",
+      "min_ns_per_draw": "14.5886",
+      "max_ns_per_draw": "16.683",
+      "checksum": "23"
+    },
+    {
+      "operation": "Strap rejection-heavy bound",
+      "draws_per_trial": "1000000",
+      "trials": "5",
+      "median_ns_per_draw": "37.9189",
+      "min_ns_per_draw": "36.3489",
+      "max_ns_per_draw": "62.5529",
+      "checksum": "6701499913572660970"
+    }
+  ]
+}

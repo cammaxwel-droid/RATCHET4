@@ -1,5 +1,7 @@
 # P-RNG — Lett-uce Guess / Ratchet-4 V1
 
+**New companion: [download Strap-Lab.html](https://github.com/cammaxwel-droid/RATCHET4/releases/download/strap-v1-review-20261101/Strap-Lab.html)** — view original Ratchet results beside their exact mirrors. Ratchet is bundled as a required dependency. [Source, custom license and executed tests](strap/README.md) · [Complete Strap ZIP](https://github.com/cammaxwel-droid/RATCHET4/releases/download/strap-v1-review-20261101/Strap-Review.zip). The paired outputs are fully dependent; inversion does not control returns or jackpots.
+
 [**Download the browser review interface — P-RNG-Lab.html**](https://github.com/cammaxwel-droid/P_RNG_LETT-UCE-GUESS/releases/download/v1-browser-review-20261101/P-RNG-Lab.html)
 
 Open the downloaded HTML file normally in **Edge or Chrome**. It runs offline, with no installation, `.cmd` launcher, administrator mode, or separate executable. This is the recommended review interface if Windows blocks the unsigned native demo.
@@ -20,4 +22,5 @@ The browser engine matched **52,224 native C++ outputs across 136 seed cases**. 
 
 The original native Windows executable was tested under Wine and is unsigned. The updated repository launcher gives a clearer message when its executable is missing; it does not sign or unblock that executable. The browser interface avoids invoking it.
 
-The source and project documents use [0BSD](LICENSE); compiler/runtime and other third-party notices are retained. Originality is proposed, not guaranteed. Original native release files are unchanged.
+Original Ratchet source, its project documents, and the earlier browser UI use [0BSD](LICENSE). New Strap code uses the separate [Ratchet Required License 1.0](strap/LICENSE); it requires the original engine and does not change earlier permissions. Compiler/runtime and other third-party notices retain their terms. Originality is proposed, not guaranteed. Original native release files are unchanged.
+

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "pairedComparisons": 52224,
+  "frozenStrapReferenceOutputs": 160,
+  "individualOutputsCompared": 104448,
+  "seedPairs": 136,
+  "quickChecks": {
+    "status": "PASS",
+    "assertions": 4480,
+    "groups": [
+      "Frozen references: original and complement",
+      "Eight bounds including rejection-heavy and maximum bounds",
+      "Input rejection, unchanged state, deterministic replay"
+    ]
+  },
+  "node": "v22.23.3",
+  "platform": "linux",
+  "baseline": "Previously compiled original Ratchet-4 V1 native CLI"
+}

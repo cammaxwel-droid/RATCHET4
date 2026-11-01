@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: LicenseRef-Ratchet-Required-1.0
+const {chromium}=require('playwright'),assert=require('assert'),fs=require('fs'),path=require('path');
+const root=path.resolve(__dirname,'..'),artifacts=process.env.TEST_ARTIFACTS;if(!artifacts)throw Error('Set TEST_ARTIFACTS outside the deliverable folder');fs.mkdirSync(artifacts,{recursive:true});
+(async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});const page=await browser.newPage({viewport:{width:1440,height:1150},acceptDownloads:true});
+ const errors=[],external=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))external.push(r.url());});
+ await page.goto('file://'+path.join(root,'Strap-Lab.html'));await page.waitForFunction(()=>!!window.strapLab);
+ const report=()=>page.evaluate(()=>strapLab.getReport()),state=()=>page.evaluate(()=>strapLab.getState());let assertions=0;const check=(ok,msg)=>{assert(ok,msg);assertions++;};
+ check((await state())[0]==='0x0000000000000010','Warm-up');
+ await page.click('#draw10');let first=(await report()).history;
+ check(first.slice(0,3).map(p=>p.ratchet).join(',')==='7,0,2','Ratchet original prefix');check(first.slice(0,3).map(p=>p.strap).join(',')==='0,7,5','Strap mirrored prefix');
+ check(first.every(p=>BigInt(p.ratchet)+BigInt(p.strap)===7n),'Every table pair sums to seven');
+ await page.click('#replay');await page.click('#draw10');check(JSON.stringify((await report()).history)===JSON.stringify(first),'Replay');
+ let before=await state();await page.selectOption('#mode','bounded');await page.fill('#bound','1');await page.click('#draw1');check(JSON.stringify(await state())===JSON.stringify(before),'Bound one unchanged state');check((await report()).history.at(-1).strap==='0','Bound one zero mirror');
+ before=await state();let calls=(await report()).calls;await page.fill('#bound','0');await page.click('#draw1');check(await page.locator('#error').isVisible(),'Bound zero visible error');check(JSON.stringify(await state())===JSON.stringify(before)&&(await report()).calls===calls,'Invalid bound unchanged state and counts');
+ await page.fill('#seedA','-1');await page.click('#apply');check(await page.locator('#error').isVisible(),'Invalid seed visible error');check(JSON.stringify(await state())===JSON.stringify(before),'Invalid seed unchanged state');
+ await page.fill('#seedA','18446744073709551615');await page.fill('#seedB','0xffffffffffffffff');await page.click('#apply');await page.selectOption('#mode','raw');await page.click('#draw1');
+ const vector=JSON.parse(fs.readFileSync(path.join(__dirname,'ratchet-vectors.json'))).find(v=>v.seed.every(s=>s==='0xffffffffffffffff'));
+ let pair=(await report()).history[0];check(pair.ratchet===vector.outputs[0],'Maximum seed Ratchet reference');check(BigInt(pair.strap)===((1n<<64n)-1n-BigInt(vector.outputs[0])),'Maximum seed Strap reference');
+ await page.selectOption('#mode','bounded');await page.fill('#bound','18446744073709551615');await page.click('#draw1');pair=(await report()).history.at(-1);check(BigInt(pair.ratchet)+BigInt(pair.strap)===(1n<<64n)-2n,'Largest bound mapping exact');
+ await page.fill('#seedA','0');await page.fill('#seedB','0');await page.click('#apply');await page.selectOption('#mode','table');await page.click('#draw1000');
+ let result=await report();check(result.calls===1000 && result.history.length===40,'Draw count and history cap');check(result.counts.ratchet.reduce((a,b)=>a+b,0)===1000 && result.counts.strap.reduce((a,b)=>a+b,0)===1000,'Both histograms total');check(result.counts.ratchet.every((n,i)=>n===result.counts.strap[7-i]),'Histograms mirror exactly');
+ before=await state();await page.click('#checks');await page.waitForFunction(()=>strapLab.getReport().checks!==null&&!document.querySelector('#checks').disabled);check((await report()).checks.status==='PASS','In-page checks');check(JSON.stringify(await state())===JSON.stringify(before),'Checks preserve state');
+ await page.click('#sample');await page.waitForFunction(()=>strapLab.getReport().sample!==null&&!document.querySelector('#sample').disabled);result=await report();check(result.sample.rawPairs===65536 && result.sample.mismatches===0,'Pair diagnostic size and complement');check(result.sample.ratchetBitOnes.every((n,i)=>n+result.sample.strapBitOnes[i]===65536),'All 64 bit counts mirrored');check(JSON.stringify(await state())===JSON.stringify(before),'Diagnostic preserves live state');
+ const promise=page.waitForEvent('download');await page.click('#export');const download=await promise,file=path.join(artifacts,'report.json');await download.saveAs(file);const saved=JSON.parse(fs.readFileSync(file));check(saved.calls===1000&&saved.checks.status==='PASS'&&saved.sample.mismatches===0,'Export actual results');check(saved.currentState.join(',')===(await state()).join(','),'Export state');
+ check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Desktop horizontal fit');await page.screenshot({path:path.join(artifacts,'desktop.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Mobile horizontal fit');check(await page.evaluate(()=>[...document.querySelectorAll('.toolbar button')].every(b=>b.scrollWidth<=b.clientWidth)),'Mobile draw button labels fit');await page.screenshot({path:path.join(artifacts,'mobile.png'),fullPage:true});
+ check(errors.length===0,'No browser errors');check(external.length===0,'No external requests');
+ const evidence={status:'PASS',assertions,browser:browser.version(),playwright:require('playwright/package.json').version,platform:process.platform,windowsNativeTested:false,protocol:'file:',browserErrors:errors,externalRequests:external,quickChecks:result.checks,diagnostic:result.sample};
+ fs.writeFileSync(path.join(root,'evidence/browser-tests.json'),JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify({status:evidence.status,assertions,browser:evidence.browser,quickAssertions:evidence.quickChecks.assertions,maxAbsZ:evidence.diagnostic.maxAbsZ}));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});
